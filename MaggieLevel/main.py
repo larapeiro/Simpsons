@@ -1,19 +1,19 @@
 import requests
 import time
 import csv
-#def Simpsons():
-  
 
  
   
 while True:
+
+  #Extraemos los datos del JSON
   URL: str = "https://thesimpsonsquoteapi.glitch.me/quotes"
   respuesta = requests.get(url = URL)
   datos= respuesta.json()
   frase_simpson: str= datos[0]['quote']
   autor: str= datos[0]['character']
-  #list=[]
-  #list.extend(datos.values())
+  
+  #Añadimos las condicionales indicando la ruta donde tiene que almacenarse y la información que almacena el diccionario
   if autor == 'Lisa Simpson':
     my_dict = {'quote': frase_simpson, 'character':autor}
     with open('MaggieLevel/Lisa/lisa.csv', 'a') as csvfile:
@@ -36,5 +36,5 @@ while True:
 
       w.writerow(my_dict)
 
-  
+  #Tiempo que indicamos para que vuelva a correr el código
   time.sleep(30)
